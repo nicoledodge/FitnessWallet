@@ -18,7 +18,7 @@ PWA including a budget tracker that delivers your bank balance information onlin
 7. [GitHub](#GitHub)
 8. [E-mail](#Email)
 ## Description
-
+The user will be able to add expenses and deposits to their budget with or without a connection. When entering transactions offline, they should populate the total when brought back online.
 ## Installation
 Clone down the repo.
 
@@ -26,13 +26,9 @@ Install dependencies:
 ```
 $ npm install
 ```
-Run the seeds data:
+Start server at http://localhost:3000/:
 ```
-$ npm run seed
-```
-Start server at http://localhost:3001/:
-```
-$ nodemon server.js
+$ nodemon start
 ```
 
 ## User Story
