@@ -2,9 +2,8 @@
 PWA including a budget tracker that delivers your bank balance information online and offline.
 
 ##  Demo
-#### Products Demo
-![Products Demo]()  
-[Link to Video Walk-Through]()
+#### Demo
+![Demo](https://github.com/nicoledodge/TravelWallet/blob/main/public/images/demo%20travelwallet.gif?raw=true)  
 
 ## Licenses
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
