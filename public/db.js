@@ -26,26 +26,24 @@ request.onerror = function (evt) {
 function checkDatabase() {
     let transaction = db.transaction(['BudgetStore'], 'readwrite');
     const store = transaction.objectStore('BudgetStore');
-    const getAll = store.getAll();
+    const allFetch = store.getAll();
 
-    getAll.onsuccess = function () {
-        if (getAll.result.length > 0) {
-            fetch('/api/transaction/bulk', {
+    allFetch.onsuccess = async function () {
+        if (allFetch.result.length > 0) {
+           const response =  fetch('/api/transaction/bulk', {
                 method: 'POST',
-                body: JSON.stringify(getAll.result),
+                body: JSON.stringify(allFetch.result),
                 headers: {
                     Accept: 'application/json, text/plain, */*',
                     'Content-Type': 'application/json',
                 },
-            })
-                .then((response) => response.json())
-                .then((res) => {
-                    if (res.length !== 0) {
+           });
+                    if (response.length !== 0) {
                         transaction = db.transaction(['BudgetStore'], 'readwrite');
                         const currentStore = transaction.objectStore('BudgetStore');
                         currentStore.clear();
                     }
-                });
+
         }
     };
 }

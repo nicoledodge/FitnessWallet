@@ -53,7 +53,6 @@ self.addEventListener("fetch", function(evt) {
                         return response;
                     })
                     .catch(err => {
-                        // Network request failed, try to get it from the cache.
                         return cache.match(evt.request);
                     });
             }).catch(err => console.log(err))
@@ -64,8 +63,10 @@ self.addEventListener("fetch", function(evt) {
 //respond with html pages of cached data
     //fetch
     evt.respondWith(
-        caches.match(evt.request).then(function(response) {
-            return response || fetch(evt.request);
+        caches.open(CACHE_NAME).then((cache) => {
+            return caches.match(evt.request).then((response) => {
+                return response || fetch(evt.request);
+            });
         })
     );
 });
